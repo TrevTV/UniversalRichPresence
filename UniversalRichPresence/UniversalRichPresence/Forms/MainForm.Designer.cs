@@ -38,6 +38,7 @@
             this.stateTextbox = new MetroFramework.Controls.MetroTextBox();
             this.saveButton = new MetroFramework.Controls.MetroButton();
             this.newProgramButton = new MetroFramework.Controls.MetroButton();
+            this.deleteButton = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // MainNotifyIcon
@@ -101,19 +102,17 @@
             this.stateTextbox.Style = MetroFramework.MetroColorStyle.White;
             this.stateTextbox.TabIndex = 3;
             this.stateTextbox.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.stateTextbox.TextChanged += DetailsChanged;
             // 
             // saveButton
             // 
             this.saveButton.Enabled = false;
-            this.saveButton.Location = new System.Drawing.Point(417, 220);
+            this.saveButton.Location = new System.Drawing.Point(358, 220);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(137, 53);
             this.saveButton.Style = MetroFramework.MetroColorStyle.White;
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "Save Settings";
             this.saveButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.saveButton.Click += SaveSettingsWrapper;
             // 
             // newProgramButton
             // 
@@ -126,11 +125,24 @@
             this.newProgramButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.newProgramButton.Click += new System.EventHandler(this.CreateNewProgram);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Enabled = false;
+            this.deleteButton.Location = new System.Drawing.Point(501, 220);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(137, 53);
+            this.deleteButton.Style = MetroFramework.MetroColorStyle.White;
+            this.deleteButton.TabIndex = 9;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteProgram);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.newProgramButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.stateLabel);
@@ -161,6 +173,7 @@
         private MetroFramework.Controls.MetroButton saveButton;
         private MetroFramework.Controls.MetroButton newProgramButton;
         public System.Windows.Forms.ListBox ProgramList;
+        private MetroFramework.Controls.MetroButton deleteButton;
     }
 }
 

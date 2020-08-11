@@ -1,4 +1,5 @@
 ﻿using DiscordRPC;
+using System.IO;
 using UniversalRichPresence.Core;
 
 namespace UniversalRichPresence.Other
@@ -7,6 +8,12 @@ namespace UniversalRichPresence.Other
     {
         public static void Setup()
         {
+            if (File.Exists(JSONCreation.programDataPath))
+            {
+                JSONCreation.ReadJson();
+                return;
+            }
+
             new RichPresenceDetails("chrome.exe", "Google Chrome", "Browsing the Internet", new Assets() { LargeImageKey = "googlechrome" });
             new RichPresenceDetails("firefox.exe", "Firefox", "Browsing the Internet", new Assets() { LargeImageKey = "firefox" });
             new RichPresenceDetails("Discord.exe", "Discord", "Talking to people", new Assets() { LargeImageKey = "discord" });
@@ -22,8 +29,6 @@ namespace UniversalRichPresence.Other
             new RichPresenceDetails("Code.exe", "Visual Studio Code", "Programming", new Assets() { LargeImageKey = "visualstudiocode" });
             new RichPresenceDetails("notepad++.exe", "Notepad++", "Editing a text document", new Assets() { LargeImageKey = "notepadpp" });
             new RichPresenceDetails("UniversalRichPresence.exe", "Universal Rich Presence", "Editing RP Details", new Assets() { LargeImageKey = "default-urp" });
-
-            JSONCreation.ReadJson();
         }
     }
 }

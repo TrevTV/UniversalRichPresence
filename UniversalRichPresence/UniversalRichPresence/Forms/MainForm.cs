@@ -61,6 +61,7 @@ namespace UniversalRichPresence.Forms
             programNameTextbox.Enabled = true;
             stateTextbox.Enabled = true;
             saveButton.Enabled = true;
+            deleteButton.Enabled = true;
 
             detailsModified = false;
             lastItemValue = ProgramList.SelectedItem.ToString();
@@ -79,6 +80,19 @@ namespace UniversalRichPresence.Forms
         private void CreateNewProgram(object sender, System.EventArgs e)
         {
             new CreateNewProgramDialog().Show();
+        }
+
+        private void DeleteProgram(object sender, System.EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(this, "Are you sure you want to delete this program?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                string oldIndex = ProgramList.SelectedItem.ToString();
+                ProgramList.SelectedIndex = 0;
+                Globals.rpDetails.Remove(oldIndex);
+                ProgramList.Items.Remove(oldIndex);
+            }
         }
 
         private void DetailsChanged(object sender, System.EventArgs e)

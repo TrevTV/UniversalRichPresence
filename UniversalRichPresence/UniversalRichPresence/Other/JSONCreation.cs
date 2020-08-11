@@ -7,7 +7,7 @@ namespace UniversalRichPresence.Other
 {
     public class JSONCreation
     {
-        static string programDataPath = Globals.userDirectory + "ProgramData.json";
+        public static string programDataPath = Globals.userDirectory + "ProgramData.json";
 
         public static void WriteJSONFromRPDetails()
         {
@@ -31,7 +31,7 @@ namespace UniversalRichPresence.Other
                 JProperty jsonData = new JProperty(data.Key, detailsObject);
                 jsonRoot.Add(jsonData);
             }
-
+ 
             File.WriteAllText(programDataPath, jsonRoot.ToString());
         }
 
